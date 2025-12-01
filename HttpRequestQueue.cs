@@ -45,6 +45,7 @@ namespace HttpBSys
                 // HttpResponseMessage response = client.GetAsync("answers?order=desc&sort=activity&site=stackoverflow").Result;
 
                 HttpResponseMessage response = await client.GetAsync(url);
+                //TODO handle exceptions
                 response.EnsureSuccessStatusCode(); // Throws ex if not a success code
                 return await response.Content.ReadAsStringAsync() ?? "";
             }

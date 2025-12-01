@@ -52,7 +52,9 @@
     private Task<string> GetHtmlContent(Uri uri)
     {
         HttpRequestQueue ms = new();
-        return ms.GetHtmlContent(uri.AbsoluteUri);
+        var content = ms.GetHtmlContent(uri.AbsoluteUri);
+        
+        return content;
 
     }   
 
@@ -71,11 +73,13 @@
 
     private async Task PerformSearch()
     {
-        //formData.Name = 
-        if (!string.IsNullOrWhiteSpace(searchText))
+        string semantic_uri = @"https://learn.microsoft.com/en-us/semantic-kernel/overview/";
+
+        if (!string.IsNullOrWhiteSpace(semantic_uri))  //searchText))
         {
             var uri = HandleUri(searchText);
             var content = await GetHtmlContent(uri);
+            HttpBSys.Services.FileSys.FileSys.Store(QuickLZ.CompressToText(content), uri.Host.Replace("www.", "").Replace(".com", "") ?? "");
             searchResult = content; // new[] { content };
         }
         else
