@@ -9,7 +9,8 @@
 //
 // Only a subset of the C library has been ported, namely level 1 and 3 not in 
 // streaming mode. 
-//
+// See: https://github.com/RT-Thread-packages/quicklz
+// Main file: https://github.com/RT-Thread-packages/quicklz/blob/master/quicklz.c
 // Version: 1.5.0 final
 
 using System;
